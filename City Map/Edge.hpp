@@ -8,22 +8,33 @@
 #ifndef Edge_hpp
 #define Edge_hpp
 
-#include <functional>
+#include "Hash.hpp"
+
+template <typename T>
+class Node;
+
+template <typename T>
+using Reference = std::reference_wrapper<const T>;
 
 template <typename T>
 struct Edge {
-    Edge(const T&, unsigned);
+    Edge(const Node<T>&, unsigned);
     
-    T endpoint;
+    Reference<Node<T>> endpoint;
     unsigned weight;
 };
 
 template <typename T>
-bool operator==(const Edge<T>&, const Edge<T>&);
+Edge(T, unsigned) -> Edge<T>;
 
-namespace std {
-    template <typename T>
-    struct hash<Edge<T>>;
+template <typename T>
+Edge<T>::Edge(const Node<T>& _endpoint, unsigned _weight):
+    endpoint{_endpoint},
+    weight{_weight} {}
+
+template <typename T>
+bool operator==(const Edge<T>& lhs, const Edge<T>& rhs) {
+    return lhs.endpoint.get() == rhs.endpoint.get();
 }
 
 #endif /* Edge_hpp */

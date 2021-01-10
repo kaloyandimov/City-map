@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C00117DF2591349C00BAB1AC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C00117DE2591349C00BAB1AC /* main.cpp */; };
-		C049BA2325914ECE00656AAD /* Edge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C049BA2125914ECE00656AAD /* Edge.cpp */; };
-		C049BA2825914F0E00656AAD /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C049BA2625914F0E00656AAD /* Graph.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,10 +25,10 @@
 /* Begin PBXFileReference section */
 		C00117DB2591349C00BAB1AC /* City Map */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "City Map"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00117DE2591349C00BAB1AC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		C049BA2125914ECE00656AAD /* Edge.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Edge.cpp; sourceTree = "<group>"; };
 		C049BA2225914ECE00656AAD /* Edge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Edge.hpp; sourceTree = "<group>"; };
-		C049BA2625914F0E00656AAD /* Graph.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Graph.cpp; sourceTree = "<group>"; };
 		C049BA2725914F0E00656AAD /* Graph.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Graph.hpp; sourceTree = "<group>"; };
+		C0C0404825AB88B200CFF362 /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Node.hpp; sourceTree = "<group>"; };
+		C0C0404D25AB8AB000CFF362 /* Hash.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Hash.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,10 +61,10 @@
 		C00117DD2591349C00BAB1AC /* City Map */ = {
 			isa = PBXGroup;
 			children = (
+				C0C0404D25AB8AB000CFF362 /* Hash.hpp */,
 				C049BA2225914ECE00656AAD /* Edge.hpp */,
-				C049BA2125914ECE00656AAD /* Edge.cpp */,
+				C0C0404825AB88B200CFF362 /* Node.hpp */,
 				C049BA2725914F0E00656AAD /* Graph.hpp */,
-				C049BA2625914F0E00656AAD /* Graph.cpp */,
 				C00117DE2591349C00BAB1AC /* main.cpp */,
 			);
 			path = "City Map";
@@ -128,8 +126,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C049BA2325914ECE00656AAD /* Edge.cpp in Sources */,
-				C049BA2825914F0E00656AAD /* Graph.cpp in Sources */,
 				C00117DF2591349C00BAB1AC /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
