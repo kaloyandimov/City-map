@@ -23,8 +23,8 @@ class Graph {
     void add_node(const T&);
     void add_edge(const T&, unsigned, const T&);
     
-    IteratorFactory<T, BFSIterator> bfs(const T&);
-    IteratorFactory<T, DFSIterator> dfs(const T&);
+    IteratorFactory<T, BFSIterator> bfs(const T&) const;
+    IteratorFactory<T, DFSIterator> dfs(const T&) const;
     
  private:
     std::unordered_map<T, Node<T>> nodes;
@@ -68,17 +68,17 @@ void Graph<T>::add_edge(const T& head, unsigned weight, const T& tail) {
 }
 
 template <typename T>
-IteratorFactory<T, BFSIterator> Graph<T>::bfs(const T& begin) {
+IteratorFactory<T, BFSIterator> Graph<T>::bfs(const T& begin) const {
     if (!contains(begin)) return {};
     
-    return {&nodes[begin]};
+    return {&nodes.at(begin)};
 }
 
 template <typename T>
-IteratorFactory<T, DFSIterator> Graph<T>::dfs(const T& begin) {
+IteratorFactory<T, DFSIterator> Graph<T>::dfs(const T& begin) const {
     if (!contains(begin)) return {};
     
-    return {&nodes[begin]};
+    return {&nodes.at(begin)};
 }
 
 template <typename T>
