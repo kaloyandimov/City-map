@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C00117DF2591349C00BAB1AC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C00117DE2591349C00BAB1AC /* main.cpp */; };
+		C051870725ACD3BF00273814 /* CityMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C051870525ACD3BF00273814 /* CityMap.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		C030D05725AC81FB00BE9BA8 /* DFSIterator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DFSIterator.hpp; sourceTree = "<group>"; };
 		C049BA2225914ECE00656AAD /* Edge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Edge.hpp; sourceTree = "<group>"; };
 		C049BA2725914F0E00656AAD /* Graph.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Graph.hpp; sourceTree = "<group>"; };
+		C051870525ACD3BF00273814 /* CityMap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CityMap.cpp; sourceTree = "<group>"; };
+		C051870625ACD3BF00273814 /* CityMap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CityMap.hpp; sourceTree = "<group>"; };
 		C058A71A25AB9C1D008BCE0A /* BFSIterator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BFSIterator.hpp; sourceTree = "<group>"; };
 		C058A72025ABA043008BCE0A /* IteratorFactory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IteratorFactory.hpp; sourceTree = "<group>"; };
 		C0C0404825AB88B200CFF362 /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Node.hpp; sourceTree = "<group>"; };
@@ -73,6 +76,8 @@
 				C030D05725AC81FB00BE9BA8 /* DFSIterator.hpp */,
 				C058A72025ABA043008BCE0A /* IteratorFactory.hpp */,
 				C049BA2725914F0E00656AAD /* Graph.hpp */,
+				C051870625ACD3BF00273814 /* CityMap.hpp */,
+				C051870525ACD3BF00273814 /* CityMap.cpp */,
 				C00117DE2591349C00BAB1AC /* main.cpp */,
 			);
 			path = "City Map";
@@ -135,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C00117DF2591349C00BAB1AC /* main.cpp in Sources */,
+				C051870725ACD3BF00273814 /* CityMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
