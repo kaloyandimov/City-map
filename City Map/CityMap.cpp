@@ -7,7 +7,7 @@
 
 #include "CityMap.hpp"
 
-Intersection* CityMap::find_intersection(const std::string& name) const {
+Intersection* CityMap::get_intersection(const std::string& name) const {
     auto pos{std::find_if(intersections.begin(), intersections.end(), [&name](Intersection* intersection) {
         return intersection->get_name() == name;
     })};
@@ -19,11 +19,14 @@ void CityMap::copy(const CityMap& other) {
     intersections.reserve(other.intersections.size());
     
     for (Intersection* intersection: other.intersections) {
-        Intersection* head{new Intersection(intersection->get_name())};
-        intersections.push_back(head);
+        intersections.emplace_back(new Intersection(intersection->get_name()));
+    }
+    
+    for (Intersection* intersection: other.intersections) {
+        Intersection* head{get_intersection(intersection->get_name())};
         
         for (auto street: intersection->get_streets()) {
-            head->add_street(head, street.distance, find_intersection(street.tail->get_name()));
+            head->add_street(head, street.distance, get_intersection(street.tail->get_name()));
         }
     }
 }

@@ -30,7 +30,7 @@ class CityMap {
     void copy(const CityMap&);
     void swap(CityMap&);
     
-    Intersection* find_intersection(const std::string&) const;
+    Intersection* get_intersection(const std::string&) const;
 };
 
 #endif /* CityMap_hpp */
