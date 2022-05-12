@@ -15,6 +15,17 @@ Intersection* CityMap::get_intersection(const std::string& name) const {
     return pos != intersections.end() ? *pos : nullptr;
 }
 
+Intersection* CityMap::get_or_add_intersection(const std::string& name) {
+    Intersection* intersection = get_intersection(name);
+    
+    if (intersection == nullptr) {
+        intersection = new Intersection(name);
+        intersections.push_back(intersection);
+    }
+    
+    return intersection;
+}
+
 void CityMap::copy(const CityMap& other) {
     intersections.reserve(other.intersections.size());
     
@@ -54,4 +65,32 @@ CityMap::~CityMap() {
     for (Intersection* intersection: intersections) {
         delete intersection;
     }
+}
+
+void CityMap::parse_intersection(const std::string& input) {
+    std::istringstream ss{input};
+    std::string headName;
+    std::string tailName;
+    Intersection* head;
+    Intersection* tail;
+    unsigned distance;
+    
+    ss >> headName;
+    
+    head = get_or_add_intersection(headName);
+    
+    while (ss >> tailName >> distance) {
+        tail = get_or_add_intersection(tailName);
+        head->add_street(head, distance, tail);
+    }
+}
+
+std::istream& operator>>(std::istream& in, CityMap& map) {
+    std::string line;
+    
+    while (std::getline(in, line)) {
+        map.parse_intersection(line);
+    }
+    
+    return in;
 }

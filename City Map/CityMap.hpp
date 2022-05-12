@@ -8,6 +8,8 @@
 #ifndef CityMap_hpp
 #define CityMap_hpp
 
+#include <istream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -23,6 +25,7 @@ class CityMap {
     ~CityMap();
     
     friend void swap(CityMap&, CityMap&);
+    friend std::istream& operator>>(std::istream&, CityMap&);
     
  private:
     std::vector<Intersection*> intersections;
@@ -31,6 +34,8 @@ class CityMap {
     void swap(CityMap&);
     
     Intersection* get_intersection(const std::string&) const;
+    Intersection* get_or_add_intersection(const std::string&);
+    void parse_intersection(const std::string&);
 };
 
 #endif /* CityMap_hpp */
