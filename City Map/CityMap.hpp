@@ -8,27 +8,29 @@
 #ifndef CityMap_hpp
 #define CityMap_hpp
 
-#include <istream>
-#include <sstream>
 #include <string>
+#include <vector>
 
-#include "Graph.hpp"
+#include "Intersection.hpp"
 
 class CityMap {
  public:
-    void add_intersection(const std::string&);
-    void add_street(const std::string&, unsigned, const std::string&);
+    CityMap() = default;
+    CityMap(const CityMap&);
+    CityMap& operator=(const CityMap&);
+    CityMap(CityMap&&) = default;
+    CityMap& operator=(CityMap&&) = default;
+    ~CityMap();
     
-    bool has_road(const std::string&, const std::string&) const;
-    bool reaches_all(const std::string&) const;
-    bool makes_circuit(const std::string&) const;
-    
-    friend std::istream& operator>>(std::istream&, CityMap&);
+    friend void swap(CityMap&, CityMap&);
     
  private:
-    Graph<std::string> intersections;
+    std::vector<Intersection*> intersections;
     
-    void parse_intersection(const std::string&);
+    void copy(const CityMap&);
+    void swap(CityMap&);
+    
+    Intersection* find_intersection(const std::string&) const;
 };
 
 #endif /* CityMap_hpp */

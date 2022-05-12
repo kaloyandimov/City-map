@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C00117DF2591349C00BAB1AC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C00117DE2591349C00BAB1AC /* main.cpp */; };
+		C04EEA2F282D25850088F587 /* Street.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04EEA2D282D25850088F587 /* Street.cpp */; };
+		C04EEA32282D25A30088F587 /* Intersection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04EEA30282D25A30088F587 /* Intersection.cpp */; };
 		C051870725ACD3BF00273814 /* CityMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C051870525ACD3BF00273814 /* CityMap.cpp */; };
 /* End PBXBuildFile section */
 
@@ -26,16 +28,12 @@
 /* Begin PBXFileReference section */
 		C00117DB2591349C00BAB1AC /* City Map */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "City Map"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00117DE2591349C00BAB1AC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		C030D05725AC81FB00BE9BA8 /* DFSIterator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DFSIterator.hpp; sourceTree = "<group>"; };
-		C049BA2225914ECE00656AAD /* Edge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Edge.hpp; sourceTree = "<group>"; };
-		C049BA2725914F0E00656AAD /* Graph.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Graph.hpp; sourceTree = "<group>"; };
+		C04EEA2D282D25850088F587 /* Street.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Street.cpp; sourceTree = "<group>"; };
+		C04EEA2E282D25850088F587 /* Street.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Street.hpp; sourceTree = "<group>"; };
+		C04EEA30282D25A30088F587 /* Intersection.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Intersection.cpp; sourceTree = "<group>"; };
+		C04EEA31282D25A30088F587 /* Intersection.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Intersection.hpp; sourceTree = "<group>"; };
 		C051870525ACD3BF00273814 /* CityMap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CityMap.cpp; sourceTree = "<group>"; };
 		C051870625ACD3BF00273814 /* CityMap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CityMap.hpp; sourceTree = "<group>"; };
-		C058A71A25AB9C1D008BCE0A /* BFSIterator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BFSIterator.hpp; sourceTree = "<group>"; };
-		C058A72025ABA043008BCE0A /* IteratorFactory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IteratorFactory.hpp; sourceTree = "<group>"; };
-		C0C0404825AB88B200CFF362 /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Node.hpp; sourceTree = "<group>"; };
-		C0C0404D25AB8AB000CFF362 /* Hash.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Hash.hpp; sourceTree = "<group>"; };
-		C0E0E8A825AB99C6008B421A /* Iterator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Iterator.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,14 +66,10 @@
 		C00117DD2591349C00BAB1AC /* City Map */ = {
 			isa = PBXGroup;
 			children = (
-				C0C0404D25AB8AB000CFF362 /* Hash.hpp */,
-				C049BA2225914ECE00656AAD /* Edge.hpp */,
-				C0C0404825AB88B200CFF362 /* Node.hpp */,
-				C0E0E8A825AB99C6008B421A /* Iterator.hpp */,
-				C058A71A25AB9C1D008BCE0A /* BFSIterator.hpp */,
-				C030D05725AC81FB00BE9BA8 /* DFSIterator.hpp */,
-				C058A72025ABA043008BCE0A /* IteratorFactory.hpp */,
-				C049BA2725914F0E00656AAD /* Graph.hpp */,
+				C04EEA2E282D25850088F587 /* Street.hpp */,
+				C04EEA2D282D25850088F587 /* Street.cpp */,
+				C04EEA31282D25A30088F587 /* Intersection.hpp */,
+				C04EEA30282D25A30088F587 /* Intersection.cpp */,
 				C051870625ACD3BF00273814 /* CityMap.hpp */,
 				C051870525ACD3BF00273814 /* CityMap.cpp */,
 				C00117DE2591349C00BAB1AC /* main.cpp */,
@@ -139,6 +133,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C04EEA32282D25A30088F587 /* Intersection.cpp in Sources */,
+				C04EEA2F282D25850088F587 /* Street.cpp in Sources */,
 				C00117DF2591349C00BAB1AC /* main.cpp in Sources */,
 				C051870725ACD3BF00273814 /* CityMap.cpp in Sources */,
 			);
@@ -153,7 +149,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -212,7 +208,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
