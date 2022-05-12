@@ -30,14 +30,10 @@ void CityMap::copy(const CityMap& other) {
     intersections.reserve(other.intersections.size());
     
     for (Intersection* intersection: other.intersections) {
-        intersections.emplace_back(new Intersection(intersection->get_name()));
-    }
-    
-    for (Intersection* intersection: other.intersections) {
-        Intersection* head{get_intersection(intersection->get_name())};
+        Intersection* head = get_or_add_intersection(intersection->get_name());
         
         for (auto street: intersection->get_streets()) {
-            head->add_street(head, street.distance, get_intersection(street.tail->get_name()));
+            head->add_street(head, street.distance, get_or_add_intersection(street.tail->get_name()));
         }
     }
 }
@@ -71,17 +67,14 @@ void CityMap::parse_intersection(const std::string& input) {
     std::istringstream ss{input};
     std::string headName;
     std::string tailName;
-    Intersection* head;
-    Intersection* tail;
     unsigned distance;
     
     ss >> headName;
     
-    head = get_or_add_intersection(headName);
+    Intersection* head{get_or_add_intersection(headName)};
     
     while (ss >> tailName >> distance) {
-        tail = get_or_add_intersection(tailName);
-        head->add_street(head, distance, tail);
+        head->add_street(head, distance, get_or_add_intersection(tailName));
     }
 }
 
