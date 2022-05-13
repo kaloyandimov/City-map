@@ -103,7 +103,7 @@ bool CityMap::has_path(const std::string& startName, const std::string& endName)
             if (street.tail == end) {
                 return true;
             }
-                
+            
             if (!visited.contains(street.tail)) {
                 to_be_visited.push(street.tail);
                 visited.insert(street.tail);
@@ -156,6 +156,150 @@ bool CityMap::has_eulerian_trail() const {
     }
     
     return true;
+}
+
+Intersection* CityMap::find_eulerian_trail_start() const {
+    auto start{std::find_if(intersections.begin(), intersections.end(), [](Intersection* intersection) {
+        return intersection->get_outdegree() - intersection->get_indegree() == 1;
+    })};
+    
+    return start != intersections.end() ? *start : intersections.front();
+}
+
+std::vector<std::string> CityMap::get_eulerian_trail() const {
+    if (intersections.empty() || !has_eulerian_trail()) {
+        return std::vector<std::string>{};
+    }
+    
+    std::unordered_map<Intersection*, std::vector<Street>> streets;
+    std::stack<Intersection*> current_path;
+    std::vector<std::string> trail;
+    
+    for (Intersection* intersection: intersections) {
+        streets[intersection] = intersection->get_streets();
+    }
+    
+    auto curr{find_eulerian_trail_start()};
+    current_path.push(curr);
+    
+    while (!current_path.empty()) {
+        if (!streets[curr].empty()) {
+            Intersection* next{streets[curr].back().tail};
+            streets[curr].pop_back();
+            current_path.push(curr);
+            curr = next;
+        }
+        else {
+            trail.push_back(curr->get_name());
+            curr = current_path.top();
+            current_path.pop();
+        }
+    }
+    
+    std::reverse(trail.begin(), trail.end());
+    
+    return trail;
+}
+
+std::vector<std::pair<std::string, std::string>> CityMap::get_deadends() const {
+    std::vector<std::pair<std::string, std::string>> deadends;
+    
+    for (Intersection* head: intersections) {
+        for (const Street& street: head->get_streets()) {
+            if (street.tail->get_outdegree() == 0) {
+                deadends.emplace_back(head->get_name(), street.tail->get_name());
+            }
+        }
+    }
+    
+    return deadends;
+}
+
+std::vector<std::vector<std::string>> CityMap::get_three_shortest_paths(const std::string& head, const std::string& tail, const std::vector<std::string>& closed) const {
+    return get_k_shortest_paths(head, tail, 3, closed);
+}
+
+std::vector<std::vector<std::string>> CityMap::get_k_shortest_paths(const std::string& head, const std::string& tail, unsigned k, const std::vector<std::string>& closed) const {
+    using Pair = std::pair<unsigned, std::vector<std::string>>;
+    
+    std::priority_queue<Pair, std::vector<Pair>, std::greater<Pair>> potenial_paths;
+    std::unordered_map<std::string, unsigned> path_counts;
+    std::vector<std::vector<std::string>> paths;
+    
+    potenial_paths.emplace(0, std::vector{head});
+    
+    while (!potenial_paths.empty() && path_counts[tail] < k) {
+        std::vector<std::string> curr_path{potenial_paths.top().second};
+        unsigned curr_length{potenial_paths.top().first};
+        std::string last{curr_path.back()};
+        potenial_paths.pop();
+        
+        if (std::find(closed.begin(), closed.end(), last) != closed.end()) {
+            continue;
+        }
+        
+        path_counts[last]++;
+        
+        if (last == tail) {
+            paths.push_back(curr_path);
+        }
+        else if (path_counts[last] <= k) {
+            for (const Street& street: get_intersection(last)->get_streets()) {
+                std::vector<std::string> new_path{curr_path};
+                new_path.push_back(street.tail->get_name());
+                potenial_paths.emplace(curr_length + street.distance, new_path);
+            }
+        }
+    }
+    
+    return paths;
+}
+
+std::vector<std::string> CityMap::get_shortest_path(const std::string& beginName, const std::string& endName) const {
+    using Pair = std::pair<unsigned, Intersection*>;
+    
+    std::priority_queue<Pair, std::vector<Pair>, std::greater<Pair>> queue;
+    std::unordered_map<Intersection*, unsigned> distances;
+    std::unordered_map<Intersection*, Intersection*> parents;
+    Intersection* begin{get_intersection(beginName)};
+    Intersection* end{get_intersection(endName)};
+    
+    for (Intersection* intersection: intersections) {
+        distances[intersection] = UINT_MAX;
+        parents[intersection] = nullptr;
+    }
+    
+    distances[begin] = 0;
+    queue.emplace(0, begin);
+    
+    while (!queue.empty()) {
+        Intersection* curr{queue.top().second};
+        queue.pop();
+        
+        for (const Street& street : curr->get_streets()) {
+            unsigned dist{distances[curr] + street.distance};
+            
+            if (dist < distances[street.tail]) {
+                distances[street.tail] = dist;
+                parents[street.tail] = curr;
+                queue.emplace(dist, street.tail);
+            }
+        }
+    }
+    
+    if (begin != end && parents[end] == nullptr) {
+        return std::vector<std::string>{};
+    }
+    
+    std::vector<std::string> shortest_path;
+    
+    for (auto current{end}; current != nullptr; current = parents[current]) {
+        shortest_path.push_back(current->get_name());
+    }
+    
+    std::reverse(shortest_path.begin(), shortest_path.end());
+    
+    return shortest_path;
 }
 
 void CityMap::parse_intersection(const std::string& input) {

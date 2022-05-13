@@ -14,6 +14,7 @@
 #include <sstream>
 #include <stack>
 #include <string>
+#include <unordered_map>
 #include <unordered_set>
 #include <vector>
 
@@ -33,6 +34,12 @@ class CityMap {
     bool has_cycle(const std::string&) const;
     bool has_eulerian_trail() const;
     
+    std::vector<std::string> get_eulerian_trail() const;
+    std::vector<std::pair<std::string, std::string>> get_deadends() const;
+    std::vector<std::string> get_shortest_path(const std::string&, const std::string&) const;
+    std::vector<std::vector<std::string>> get_three_shortest_paths(const std::string&, const std::string&, const std::vector<std::string>& = {}) const;
+    std::vector<std::vector<std::string>> get_k_shortest_paths(const std::string&, const std::string&, unsigned k, const std::vector<std::string>& = {}) const;
+    
     friend void swap(CityMap&, CityMap&);
     friend std::istream& operator>>(std::istream&, CityMap&);
     
@@ -43,6 +50,8 @@ class CityMap {
     void swap(CityMap&);
     
     bool has_cycle_util(Intersection*, Intersection*, std::unordered_set<Intersection*>&) const;
+    
+    Intersection* find_eulerian_trail_start() const;
     
     Intersection* get_intersection(const std::string&) const;
     Intersection* get_or_add_intersection(const std::string&);
