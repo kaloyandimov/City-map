@@ -215,6 +215,12 @@ std::vector<std::pair<std::string, std::string>> CityMap::get_deadends() const {
     return deadends;
 }
 
+std::vector<std::string> CityMap::get_shortest_path(const std::string& head, const std::string& tail, const std::vector<std::string>& closed) const {
+    auto result{get_k_shortest_paths(head, tail, 1, closed)};
+    
+    return !result.empty() ? result.front() : std::vector<std::string>{};
+}
+
 std::vector<std::vector<std::string>> CityMap::get_three_shortest_paths(const std::string& head, const std::string& tail, const std::vector<std::string>& closed) const {
     return get_k_shortest_paths(head, tail, 3, closed);
 }
@@ -253,53 +259,6 @@ std::vector<std::vector<std::string>> CityMap::get_k_shortest_paths(const std::s
     }
     
     return paths;
-}
-
-std::vector<std::string> CityMap::get_shortest_path(const std::string& beginName, const std::string& endName) const {
-    using Pair = std::pair<unsigned, Intersection*>;
-    
-    std::priority_queue<Pair, std::vector<Pair>, std::greater<Pair>> queue;
-    std::unordered_map<Intersection*, unsigned> distances;
-    std::unordered_map<Intersection*, Intersection*> parents;
-    Intersection* begin{get_intersection(beginName)};
-    Intersection* end{get_intersection(endName)};
-    
-    for (Intersection* intersection: intersections) {
-        distances[intersection] = UINT_MAX;
-        parents[intersection] = nullptr;
-    }
-    
-    distances[begin] = 0;
-    queue.emplace(0, begin);
-    
-    while (!queue.empty()) {
-        Intersection* curr{queue.top().second};
-        queue.pop();
-        
-        for (const Street& street : curr->get_streets()) {
-            unsigned dist{distances[curr] + street.distance};
-            
-            if (dist < distances[street.tail]) {
-                distances[street.tail] = dist;
-                parents[street.tail] = curr;
-                queue.emplace(dist, street.tail);
-            }
-        }
-    }
-    
-    if (begin != end && parents[end] == nullptr) {
-        return std::vector<std::string>{};
-    }
-    
-    std::vector<std::string> shortest_path;
-    
-    for (auto current{end}; current != nullptr; current = parents[current]) {
-        shortest_path.push_back(current->get_name());
-    }
-    
-    std::reverse(shortest_path.begin(), shortest_path.end());
-    
-    return shortest_path;
 }
 
 void CityMap::parse_intersection(const std::string& input) {

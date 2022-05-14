@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C00117DF2591349C00BAB1AC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C00117DE2591349C00BAB1AC /* main.cpp */; };
+		C03FC751282EF767007E1514 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C03FC74F282EF767007E1514 /* Controller.cpp */; };
+		C03FC75D282F31A8007E1514 /* Command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C03FC75B282F31A8007E1514 /* Command.cpp */; };
+		C03FC763282F3BF0007E1514 /* CommandParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C03FC761282F3BF0007E1514 /* CommandParser.cpp */; };
 		C04EEA2F282D25850088F587 /* Street.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04EEA2D282D25850088F587 /* Street.cpp */; };
 		C04EEA32282D25A30088F587 /* Intersection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04EEA30282D25A30088F587 /* Intersection.cpp */; };
 		C051870725ACD3BF00273814 /* CityMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C051870525ACD3BF00273814 /* CityMap.cpp */; };
@@ -28,6 +31,12 @@
 /* Begin PBXFileReference section */
 		C00117DB2591349C00BAB1AC /* City Map */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "City Map"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00117DE2591349C00BAB1AC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C03FC74F282EF767007E1514 /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
+		C03FC750282EF767007E1514 /* Controller.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Controller.hpp; sourceTree = "<group>"; };
+		C03FC75B282F31A8007E1514 /* Command.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Command.cpp; sourceTree = "<group>"; };
+		C03FC75C282F31A8007E1514 /* Command.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Command.hpp; sourceTree = "<group>"; };
+		C03FC761282F3BF0007E1514 /* CommandParser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CommandParser.cpp; sourceTree = "<group>"; };
+		C03FC762282F3BF0007E1514 /* CommandParser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CommandParser.hpp; sourceTree = "<group>"; };
 		C04EEA2D282D25850088F587 /* Street.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Street.cpp; sourceTree = "<group>"; };
 		C04EEA2E282D25850088F587 /* Street.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Street.hpp; sourceTree = "<group>"; };
 		C04EEA30282D25A30088F587 /* Intersection.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Intersection.cpp; sourceTree = "<group>"; };
@@ -72,6 +81,12 @@
 				C04EEA30282D25A30088F587 /* Intersection.cpp */,
 				C051870625ACD3BF00273814 /* CityMap.hpp */,
 				C051870525ACD3BF00273814 /* CityMap.cpp */,
+				C03FC75C282F31A8007E1514 /* Command.hpp */,
+				C03FC75B282F31A8007E1514 /* Command.cpp */,
+				C03FC762282F3BF0007E1514 /* CommandParser.hpp */,
+				C03FC761282F3BF0007E1514 /* CommandParser.cpp */,
+				C03FC750282EF767007E1514 /* Controller.hpp */,
+				C03FC74F282EF767007E1514 /* Controller.cpp */,
 				C00117DE2591349C00BAB1AC /* main.cpp */,
 			);
 			path = "City Map";
@@ -134,8 +149,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C04EEA32282D25A30088F587 /* Intersection.cpp in Sources */,
+				C03FC75D282F31A8007E1514 /* Command.cpp in Sources */,
 				C04EEA2F282D25850088F587 /* Street.cpp in Sources */,
+				C03FC751282EF767007E1514 /* Controller.cpp in Sources */,
 				C00117DF2591349C00BAB1AC /* main.cpp in Sources */,
+				C03FC763282F3BF0007E1514 /* CommandParser.cpp in Sources */,
 				C051870725ACD3BF00273814 /* CityMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
