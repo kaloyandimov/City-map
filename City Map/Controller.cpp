@@ -45,8 +45,8 @@ void Controller::stop() {
     running = false;
 }
 
-void Controller::register_command(const std::string& name, const std::string& usage, const Function& function) {
-    commands.emplace(name, Command{name, usage, function});
+void Controller::register_command(const std::string& name, const std::string& usage, unsigned arguments_count, const Function& function) {
+    commands.emplace(name, Command{name, usage, arguments_count, function});
     insertion_order.push_back(name);
 }
 
@@ -54,6 +54,7 @@ bool Controller::init_commands() {
     register_command(
         "location",
         "print current position",
+        0,
         [](Controller& ctrl, const std::vector<std::string>& args) {
             ctrl.out << ctrl.position->get_name() << std::endl;
         }
@@ -62,6 +63,7 @@ bool Controller::init_commands() {
     register_command(
         "neighbours",
         "print all adjacent intersections",
+        0,
         [](Controller& ctrl, const std::vector<std::string>& args) {
             for (const Street& street: ctrl.position->get_streets()) {
                 ctrl.out << street.tail->get_name() << "\n";
@@ -74,6 +76,7 @@ bool Controller::init_commands() {
     register_command(
         "change",
         "change current position",
+        1,
         [](Controller& ctrl, const std::vector<std::string>& args) {
             Intersection* intersection{ctrl.map.get_intersection(args[0])};
             
@@ -94,6 +97,7 @@ bool Controller::init_commands() {
     register_command(
         "move",
         "change current position and print the path",
+        1,
         [](Controller& ctrl, const std::vector<std::string>& args) {
             auto intersection{ctrl.map.get_intersection(args[0])};
             
@@ -120,6 +124,7 @@ bool Controller::init_commands() {
     register_command(
         "close",
         "add intersection to the list of closed intersections",
+        1,
         [](Controller& ctrl, const std::vector<std::string>& args) {
             auto intersection{ctrl.map.get_intersection(args[0])};
             
@@ -138,6 +143,7 @@ bool Controller::init_commands() {
     register_command(
         "open",
         "remove intersection from the list of closed intersections",
+        1,
         [](Controller& ctrl, const std::vector<std::string>& args) {
             auto found{ctrl.map.get_intersection(args[0]) != nullptr};
             
@@ -159,6 +165,7 @@ bool Controller::init_commands() {
     register_command(
         "closed",
         "print all closed intersections",
+        0,
         [](Controller& ctrl, const std::vector<std::string>& args) {
             for (const std::string& name: ctrl.closed_intersections) {
                 ctrl.out << name << "\n";
@@ -171,6 +178,7 @@ bool Controller::init_commands() {
     register_command(
         "tour",
         "print a city tour",
+        0,
         [](Controller& ctrl, const std::vector<std::string>& args) {
             std::vector<std::string> tour{ctrl.map.get_eulerian_trail()};
             
@@ -189,6 +197,7 @@ bool Controller::init_commands() {
     register_command(
         "help",
         "print this list",
+        0,
         [](Controller& ctrl, const std::vector<std::string>& args) {
             for (const std::string& name: ctrl.insertion_order) {
                 ctrl.out << std::setw(14) << std::left << name;
@@ -202,6 +211,7 @@ bool Controller::init_commands() {
     register_command(
         "exit",
         "exit the program",
+        0,
         [](Controller& ctrl, const std::vector<std::string>& args) {
             ctrl.stop();
         }

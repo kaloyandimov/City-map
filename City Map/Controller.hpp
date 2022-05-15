@@ -46,7 +46,7 @@ class Controller {
     static std::vector<std::string> insertion_order;
     static bool init;
     
-    static void register_command(const std::string&, const std::string&, const Function&);
+    static void register_command(const std::string&, const std::string&, unsigned, const Function&);
     static bool init_commands();
 };
 
