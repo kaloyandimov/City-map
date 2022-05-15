@@ -8,8 +8,10 @@
 #ifndef Controller_hpp
 #define Controller_hpp
 
+#include <algorithm>
 #include <fstream>
 #include <functional>
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include <unordered_map>
@@ -18,7 +20,9 @@
 #include "CityMap.hpp"
 #include "Command.hpp"
 #include "CommandParser.hpp"
+#include "CustomException.hpp"
 #include "Intersection.hpp"
+#include "Street.hpp"
 
 class Controller {
  public:

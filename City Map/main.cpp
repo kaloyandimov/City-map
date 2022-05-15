@@ -6,8 +6,8 @@
 //
 
 #include <cstring>
+#include <string>
 
-#include "CityMap.hpp"
 #include "Controller.hpp"
 
 int main(int argc, const char* argv[]) {
