@@ -32,11 +32,15 @@ void Controller::run() {
         std::getline(in, input);
         parser.parse(input);
         
-        if (commands.contains(parser.parsed_name())) {
+        if (!commands.contains(parser.parsed_name())) {
+            err << "Invalid command" << std::endl; continue;
+        }
+        
+        try {
             commands.at(parser.parsed_name())(*this, parser.parsed_arguments());
         }
-        else {
-            err << "Invalid command" << std::endl;
+        catch (const CustomException& e) {
+            err << e.what() << std::endl;
         }
     }
 }
