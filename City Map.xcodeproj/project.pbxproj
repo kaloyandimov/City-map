@@ -14,6 +14,8 @@
 		C04EEA2F282D25850088F587 /* Street.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04EEA2D282D25850088F587 /* Street.cpp */; };
 		C04EEA32282D25A30088F587 /* Intersection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04EEA30282D25A30088F587 /* Intersection.cpp */; };
 		C051870725ACD3BF00273814 /* CityMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C051870525ACD3BF00273814 /* CityMap.cpp */; };
+		C07D63492831305400E9C7CC /* CustomException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C07D63472831305400E9C7CC /* CustomException.cpp */; };
+		C07D634C283130BE00E9C7CC /* InvalidArgumentsCountException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C07D634A283130BE00E9C7CC /* InvalidArgumentsCountException.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +45,10 @@
 		C04EEA31282D25A30088F587 /* Intersection.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Intersection.hpp; sourceTree = "<group>"; };
 		C051870525ACD3BF00273814 /* CityMap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CityMap.cpp; sourceTree = "<group>"; };
 		C051870625ACD3BF00273814 /* CityMap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CityMap.hpp; sourceTree = "<group>"; };
+		C07D63472831305400E9C7CC /* CustomException.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CustomException.cpp; sourceTree = "<group>"; };
+		C07D63482831305400E9C7CC /* CustomException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CustomException.hpp; sourceTree = "<group>"; };
+		C07D634A283130BE00E9C7CC /* InvalidArgumentsCountException.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InvalidArgumentsCountException.cpp; sourceTree = "<group>"; };
+		C07D634B283130BE00E9C7CC /* InvalidArgumentsCountException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InvalidArgumentsCountException.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,10 @@
 				C03FC750282EF767007E1514 /* Controller.hpp */,
 				C03FC74F282EF767007E1514 /* Controller.cpp */,
 				C00117DE2591349C00BAB1AC /* main.cpp */,
+				C07D63482831305400E9C7CC /* CustomException.hpp */,
+				C07D63472831305400E9C7CC /* CustomException.cpp */,
+				C07D634A283130BE00E9C7CC /* InvalidArgumentsCountException.cpp */,
+				C07D634B283130BE00E9C7CC /* InvalidArgumentsCountException.hpp */,
 			);
 			path = "City Map";
 			sourceTree = "<group>";
@@ -151,9 +161,11 @@
 				C04EEA32282D25A30088F587 /* Intersection.cpp in Sources */,
 				C03FC75D282F31A8007E1514 /* Command.cpp in Sources */,
 				C04EEA2F282D25850088F587 /* Street.cpp in Sources */,
+				C07D634C283130BE00E9C7CC /* InvalidArgumentsCountException.cpp in Sources */,
 				C03FC751282EF767007E1514 /* Controller.cpp in Sources */,
 				C00117DF2591349C00BAB1AC /* main.cpp in Sources */,
 				C03FC763282F3BF0007E1514 /* CommandParser.cpp in Sources */,
+				C07D63492831305400E9C7CC /* CustomException.cpp in Sources */,
 				C051870725ACD3BF00273814 /* CityMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
