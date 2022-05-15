@@ -8,6 +8,7 @@
 #include "Controller.hpp"
 
 std::unordered_map<std::string, Command> Controller::commands;
+std::vector<std::string> Controller::insertion_order;
 
 bool Controller::init{Controller::init_commands()};
 
@@ -46,6 +47,7 @@ void Controller::stop() {
 
 void Controller::register_command(const std::string& name, const std::string& usage, const Function& function) {
     commands.emplace(name, Command{name, usage, function});
+    insertion_order.push_back(name);
 }
 
 bool Controller::init_commands() {
@@ -178,6 +180,19 @@ bool Controller::init_commands() {
             
             for (const std::string& name: tour) {
                 ctrl.out << name << "\n";
+            }
+            
+            ctrl.out.flush();
+        }
+    );
+    
+    register_command(
+        "help",
+        "print this list",
+        [](Controller& ctrl, const std::vector<std::string>& args) {
+            for (const std::string& name: ctrl.insertion_order) {
+                ctrl.out << std::setw(14) << std::left << name;
+                ctrl.out << ctrl.commands.at(name).get_usage() << "\n";
             }
             
             ctrl.out.flush();

@@ -43,6 +43,7 @@ class Controller {
     std::ostream& err;
     
     static std::unordered_map<std::string, Command> commands;
+    static std::vector<std::string> insertion_order;
     static bool init;
     
     static void register_command(const std::string&, const std::string&, const Function&);
