@@ -40,9 +40,9 @@ class CityMap {
     
     std::vector<std::string> get_eulerian_trail() const;
     std::vector<std::pair<std::string, std::string>> get_deadends() const;
-    std::vector<std::string> get_shortest_path(const std::string&, const std::string&, const std::vector<std::string>& = {}) const;
-    std::vector<std::vector<std::string>> get_three_shortest_paths(const std::string&, const std::string&, const std::vector<std::string>& = {}) const;
-    std::vector<std::vector<std::string>> get_k_shortest_paths(const std::string&, const std::string&, unsigned k, const std::vector<std::string>& = {}) const;
+    std::vector<std::string> get_shortest_path(const std::string&, const std::string&, const std::unordered_set<std::string>& = {}) const;
+    std::vector<std::vector<std::string>> get_three_shortest_paths(const std::string&, const std::string&, const std::unordered_set<std::string>& = {}) const;
+    std::vector<std::vector<std::string>> get_k_shortest_paths(const std::string&, const std::string&, unsigned k, const std::unordered_set<std::string>& = {}) const;
     
     friend void swap(CityMap&, CityMap&);
     friend std::istream& operator>>(std::istream&, CityMap&);

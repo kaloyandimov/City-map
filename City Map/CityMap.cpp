@@ -215,17 +215,17 @@ std::vector<std::pair<std::string, std::string>> CityMap::get_deadends() const {
     return deadends;
 }
 
-std::vector<std::string> CityMap::get_shortest_path(const std::string& head, const std::string& tail, const std::vector<std::string>& closed) const {
+std::vector<std::string> CityMap::get_shortest_path(const std::string& head, const std::string& tail, const std::unordered_set<std::string>& closed) const {
     auto result{get_k_shortest_paths(head, tail, 1, closed)};
     
     return !result.empty() ? result.front() : std::vector<std::string>{};
 }
 
-std::vector<std::vector<std::string>> CityMap::get_three_shortest_paths(const std::string& head, const std::string& tail, const std::vector<std::string>& closed) const {
+std::vector<std::vector<std::string>> CityMap::get_three_shortest_paths(const std::string& head, const std::string& tail, const std::unordered_set<std::string>& closed) const {
     return get_k_shortest_paths(head, tail, 3, closed);
 }
 
-std::vector<std::vector<std::string>> CityMap::get_k_shortest_paths(const std::string& head, const std::string& tail, unsigned k, const std::vector<std::string>& closed) const {
+std::vector<std::vector<std::string>> CityMap::get_k_shortest_paths(const std::string& head, const std::string& tail, unsigned k, const std::unordered_set<std::string>& closed) const {
     using Pair = std::pair<unsigned, std::vector<std::string>>;
     
     std::priority_queue<Pair, std::vector<Pair>, std::greater<Pair>> potenial_paths;
@@ -240,7 +240,7 @@ std::vector<std::vector<std::string>> CityMap::get_k_shortest_paths(const std::s
         std::string last{curr_path.back()};
         potenial_paths.pop();
         
-        if (std::find(closed.begin(), closed.end(), last) != closed.end()) {
+        if (closed.contains(last)) {
             continue;
         }
         

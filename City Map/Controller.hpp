@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 #include "CityMap.hpp"
@@ -39,7 +40,7 @@ class Controller {
  private:
     CityMap map;
     Intersection* position;
-    std::vector<std::string> closed_intersections;
+    std::unordered_set<std::string> closed_intersections;
     bool running;
     
     std::istream& in;

@@ -88,9 +88,7 @@ bool Controller::init_commands() {
                 ctrl.err << "No such intersection" << std::endl; return;
             }
             
-            auto pos{std::find(ctrl.closed_intersections.begin(), ctrl.closed_intersections.end(), args[0])};
-            
-            if (pos != ctrl.closed_intersections.end()) {
+            if (ctrl.closed_intersections.contains(args[0])) {
                 ctrl.err << "Closed intersection" << std::endl; return;
             }
             
@@ -140,7 +138,7 @@ bool Controller::init_commands() {
                 ctrl.err << "Cannot close current intersection" << std::endl; return;
             }
             
-            ctrl.closed_intersections.push_back(args[0]);
+            ctrl.closed_intersections.insert(args[0]);
         }
     );
     
@@ -156,13 +154,7 @@ bool Controller::init_commands() {
                 
             }
             
-            auto pos{std::find_if(ctrl.closed_intersections.begin(), ctrl.closed_intersections.end(), [&args](const std::string& name) {
-                return name == args[0];
-            })};
-            
-            if (pos != ctrl.closed_intersections.end()) {
-                ctrl.closed_intersections.erase(pos);
-            }
+            ctrl.closed_intersections.erase(args[0]);
         }
     );
     
