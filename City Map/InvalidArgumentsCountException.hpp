@@ -10,9 +10,9 @@
 
 #include "CustomException.hpp"
 
-class InvalidArgumentsCountException: public CustomException {
+class InvalidArgumentsCountException : public CustomException {
  public:
-   InvalidArgumentsCountException(const std::string& what_arg);
+   InvalidArgumentsCountException(const std::string&);
 };
 
 #endif /* InvalidArgumentsCountException_hpp */

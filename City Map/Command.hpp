@@ -16,7 +16,7 @@
 
 class Controller;
 
-using Function = std::function<void(Controller&, std::vector<std::string>)>;
+using Function = std::function<void(Controller&, const std::vector<std::string>&)>;
 
 class Command {
  public:

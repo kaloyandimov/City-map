@@ -12,12 +12,12 @@ std::vector<std::string> Controller::insertion_order;
 
 bool Controller::init{Controller::init_commands()};
 
-Controller::Controller(const std::string& path, const std::string& starting_position, std::istream& _in, std::ostream& _out, std::ostream& _err): in{_in}, out{_out}, err{_err} {
+Controller::Controller(const std::string& path, const std::string& name, std::istream& _in, std::ostream& _out, std::ostream& _err): in{_in}, out{_out}, err{_err} {
     std::ifstream in{path};
     
     in >> map;
     
-    position = map.get_intersection(starting_position);
+    position = map.get_intersection(name);
 }
 
 void Controller::run() { 
@@ -38,8 +38,7 @@ void Controller::run() {
         
         try {
             commands.at(parser.parsed_name())(*this, parser.parsed_arguments());
-        }
-        catch (const CustomException& e) {
+        } catch (const CustomException& e) {
             err << e.what() << std::endl;
         }
     }
@@ -69,7 +68,7 @@ bool Controller::init_commands() {
         "print all adjacent intersections",
         0,
         [](Controller& ctrl, const std::vector<std::string>& args) {
-            for (const Street& street: ctrl.position->get_streets()) {
+            for (const Street& street : ctrl.position->get_streets()) {
                 ctrl.out << street.tail->get_name() << "\n";
             }
                          
@@ -113,7 +112,7 @@ bool Controller::init_commands() {
                 ctrl.out << "No such path" << std::endl; return;
             }
             
-            for (const std::string& name: path) {
+            for (const std::string& name : path) {
                 ctrl.out << name << "\n";
             }
             
@@ -151,7 +150,6 @@ bool Controller::init_commands() {
             
             if (!found) {
                 ctrl.err << "No such intersection" << std::endl; return;
-                
             }
             
             ctrl.closed_intersections.erase(args[0]);
@@ -163,7 +161,7 @@ bool Controller::init_commands() {
         "print all closed intersections",
         0,
         [](Controller& ctrl, const std::vector<std::string>& args) {
-            for (const std::string& name: ctrl.closed_intersections) {
+            for (const std::string& name : ctrl.closed_intersections) {
                 ctrl.out << name << "\n";
             }
             
@@ -182,7 +180,7 @@ bool Controller::init_commands() {
                 ctrl.err << "No such tour" << std::endl; return;
             }
             
-            for (const std::string& name: tour) {
+            for (const std::string& name : tour) {
                 ctrl.out << name << "\n";
             }
             
@@ -195,7 +193,7 @@ bool Controller::init_commands() {
         "print this list",
         0,
         [](Controller& ctrl, const std::vector<std::string>& args) {
-            for (const std::string& name: ctrl.insertion_order) {
+            for (const std::string& name : ctrl.insertion_order) {
                 ctrl.out << std::setw(14) << std::left << name;
                 ctrl.out << ctrl.commands.at(name).get_usage() << "\n";
             }

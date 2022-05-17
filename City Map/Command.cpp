@@ -10,11 +10,11 @@
 Command::Command(const std::string& _name, const std::string& _usage, unsigned _arguments_count, const Function& _function):
     name{_name}, usage{_usage}, arguments_count{_arguments_count}, function{_function} {}
 
-const std::string &Command::get_name() const {
+const std::string& Command::get_name() const {
     return name;
 }
 
-const std::string &Command::get_usage() const { 
+const std::string& Command::get_usage() const { 
     return usage;
 }
 
