@@ -33,13 +33,13 @@ void Controller::run() {
         parser.parse(input);
         
         if (!commands.contains(parser.parsed_name())) {
-            err << "Invalid command" << std::endl; continue;
+            err << "Invalid command\n"; continue;
         }
         
         try {
             commands.at(parser.parsed_name())(*this, parser.parsed_arguments());
         } catch (const CustomException& e) {
-            err << e.what() << std::endl;
+            err << e.what() << "\n";
         }
     }
 }
@@ -59,7 +59,7 @@ bool Controller::init_commands() {
         "print current position",
         0,
         [](Controller& ctrl, const std::vector<std::string>& args) {
-            ctrl.out << ctrl.position->get_name() << std::endl;
+            ctrl.out << ctrl.position->get_name() << "\n";
         }
     );
     
@@ -71,8 +71,6 @@ bool Controller::init_commands() {
             for (const Street& street : ctrl.position->get_streets()) {
                 ctrl.out << street.tail->get_name() << "\n";
             }
-                         
-            ctrl.out.flush();
         }
     );
     
@@ -84,11 +82,11 @@ bool Controller::init_commands() {
             Intersection* intersection{ctrl.map.get_intersection(args[0])};
             
             if (intersection == nullptr) {
-                ctrl.err << "No such intersection" << std::endl; return;
+                ctrl.err << "No such intersection\n"; return;
             }
             
             if (ctrl.closed_intersections.contains(args[0])) {
-                ctrl.err << "Closed intersection" << std::endl; return;
+                ctrl.err << "Closed intersection\n"; return;
             }
             
             ctrl.position = intersection;
@@ -103,20 +101,18 @@ bool Controller::init_commands() {
             auto intersection{ctrl.map.get_intersection(args[0])};
             
             if (intersection == nullptr) {
-                ctrl.err << "No such intersection" << std::endl; return;
+                ctrl.err << "No such intersection\n"; return;
             }
             
             auto path{ctrl.map.get_shortest_path(ctrl.position->get_name(), args[0], ctrl.closed_intersections)};
             
             if (path.empty()) {
-                ctrl.out << "No such path" << std::endl; return;
+                ctrl.out << "No such path\n"; return;
             }
             
             for (const std::string& name : path) {
                 ctrl.out << name << "\n";
             }
-            
-            ctrl.out.flush();
             
             ctrl.position = intersection;
         }
@@ -130,11 +126,11 @@ bool Controller::init_commands() {
             auto intersection{ctrl.map.get_intersection(args[0])};
             
             if (intersection == nullptr) {
-                ctrl.err << "No such intersection" << std::endl; return;
+                ctrl.err << "No such intersection\n"; return;
             }
             
             if (intersection == ctrl.position) {
-                ctrl.err << "Cannot close current intersection" << std::endl; return;
+                ctrl.err << "Cannot close current intersection\n"; return;
             }
             
             ctrl.closed_intersections.insert(args[0]);
@@ -149,7 +145,7 @@ bool Controller::init_commands() {
             auto found{ctrl.map.get_intersection(args[0]) != nullptr};
             
             if (!found) {
-                ctrl.err << "No such intersection" << std::endl; return;
+                ctrl.err << "No such intersection\n"; return;
             }
             
             ctrl.closed_intersections.erase(args[0]);
@@ -164,8 +160,6 @@ bool Controller::init_commands() {
             for (const std::string& name : ctrl.closed_intersections) {
                 ctrl.out << name << "\n";
             }
-            
-            ctrl.out.flush();
         }
     );
     
@@ -177,14 +171,12 @@ bool Controller::init_commands() {
             std::vector<std::string> tour{ctrl.map.get_eulerian_trail()};
             
             if (tour.empty()) {
-                ctrl.err << "No such tour" << std::endl; return;
+                ctrl.err << "No such tour\n"; return;
             }
             
             for (const std::string& name : tour) {
                 ctrl.out << name << "\n";
             }
-            
-            ctrl.out.flush();
         }
     );
     
@@ -197,8 +189,6 @@ bool Controller::init_commands() {
                 ctrl.out << std::setw(14) << std::left << name;
                 ctrl.out << ctrl.commands.at(name).get_usage() << "\n";
             }
-            
-            ctrl.out.flush();
         }
     );
     
