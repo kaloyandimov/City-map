@@ -23,6 +23,7 @@
 #include "CommandParser.hpp"
 #include "CustomException.hpp"
 #include "Intersection.hpp"
+#include "ParseException.hpp"
 #include "Street.hpp"
 
 class Controller {
@@ -39,9 +40,10 @@ class Controller {
     
  private:
     CityMap map;
-    Intersection* position;
+    Intersection* position{nullptr};
     std::unordered_set<std::string> closed_intersections;
-    bool running;
+    bool parsed_successfully{false};
+    bool running{false};
     
     std::istream& in;
     std::ostream& out;

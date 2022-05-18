@@ -269,6 +269,10 @@ void CityMap::parse_intersection(const std::string& input) {
     while (ss >> distance >> name) {
         head->add_street(head, distance, get_or_add_intersection(name));
     }
+    
+    if (!ss.eof()) {
+        throw ParseException{"Parsing failure: " + input};
+    }
 }
 
 std::istream& operator>>(std::istream& in, CityMap& map) {

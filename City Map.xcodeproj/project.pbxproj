@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C00117DF2591349C00BAB1AC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C00117DE2591349C00BAB1AC /* main.cpp */; };
+		C01FA8532833DF1200B2F991 /* ParseException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C01FA8512833DF1200B2F991 /* ParseException.cpp */; };
 		C03FC751282EF767007E1514 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C03FC74F282EF767007E1514 /* Controller.cpp */; };
 		C03FC75D282F31A8007E1514 /* Command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C03FC75B282F31A8007E1514 /* Command.cpp */; };
 		C03FC763282F3BF0007E1514 /* CommandParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C03FC761282F3BF0007E1514 /* CommandParser.cpp */; };
@@ -33,6 +34,8 @@
 /* Begin PBXFileReference section */
 		C00117DB2591349C00BAB1AC /* City Map */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "City Map"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00117DE2591349C00BAB1AC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C01FA8512833DF1200B2F991 /* ParseException.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ParseException.cpp; sourceTree = "<group>"; };
+		C01FA8522833DF1200B2F991 /* ParseException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ParseException.hpp; sourceTree = "<group>"; };
 		C03FC74F282EF767007E1514 /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		C03FC750282EF767007E1514 /* Controller.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Controller.hpp; sourceTree = "<group>"; };
 		C03FC75B282F31A8007E1514 /* Command.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Command.cpp; sourceTree = "<group>"; };
@@ -96,8 +99,10 @@
 				C00117DE2591349C00BAB1AC /* main.cpp */,
 				C07D63482831305400E9C7CC /* CustomException.hpp */,
 				C07D63472831305400E9C7CC /* CustomException.cpp */,
-				C07D634A283130BE00E9C7CC /* InvalidArgumentsCountException.cpp */,
 				C07D634B283130BE00E9C7CC /* InvalidArgumentsCountException.hpp */,
+				C07D634A283130BE00E9C7CC /* InvalidArgumentsCountException.cpp */,
+				C01FA8522833DF1200B2F991 /* ParseException.hpp */,
+				C01FA8512833DF1200B2F991 /* ParseException.cpp */,
 			);
 			path = "City Map";
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				C04EEA2F282D25850088F587 /* Street.cpp in Sources */,
 				C07D634C283130BE00E9C7CC /* InvalidArgumentsCountException.cpp in Sources */,
 				C03FC751282EF767007E1514 /* Controller.cpp in Sources */,
+				C01FA8532833DF1200B2F991 /* ParseException.cpp in Sources */,
 				C00117DF2591349C00BAB1AC /* main.cpp in Sources */,
 				C03FC763282F3BF0007E1514 /* CommandParser.cpp in Sources */,
 				C07D63492831305400E9C7CC /* CustomException.cpp in Sources */,

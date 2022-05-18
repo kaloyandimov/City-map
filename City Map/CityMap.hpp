@@ -20,6 +20,7 @@
 #include <vector>
 
 #include "Intersection.hpp"
+#include "ParseException.hpp"
 #include "Street.hpp"
 
 class Controller;

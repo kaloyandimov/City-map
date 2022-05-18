@@ -15,12 +15,22 @@ bool Controller::init{Controller::init_commands()};
 Controller::Controller(const std::string& path, const std::string& name, std::istream& _in, std::ostream& _out, std::ostream& _err): in{_in}, out{_out}, err{_err} {
     std::ifstream in{path};
     
-    in >> map;
+    try {
+        in >> map;
+        parsed_successfully = true;
+    } catch (const ParseException& e) {
+        err << e.what() << "\n";
+        parsed_successfully = false;
+    }
     
     position = map.get_intersection(name);
 }
 
-void Controller::run() { 
+void Controller::run() {
+    if (!parsed_successfully) {
+        return;
+    }
+    
     CommandParser parser;
     std::string input;
     
