@@ -1,35 +1,47 @@
 # City Map :round_pushpin:
-Write a program that represents a city map. 
-## Basic Functionality
-The map information is contained in a text file. In the first place on each line stands the name of an intersection, followed by pairs of names of other intersections and the length of the street from the first intersection to the second. 
+A computer program that represents a city map as a weighted directed graph where the nodes are intersections and the edges are streets.
+
+## Table of Contents
+- [Map Data](#map-data)
+- [Implemented Functions](#implemented-functions)
+- [Interactive Mode](#interactive-mode)
+
+## Map Data
+The map data is contained in a text file. In the first place on each line is written the name of an intersection, followed by pairs of the distance to an adjacent intersection and its name.
 
 For example:  
-**`Македония`** `5Кьошета 600` `Руски 450`  
-**`5Кьошета`** `Македония 600` `Руски 400`  
-**`Руски`** `Македония 450` `5Кьошета 400`  
+**`A`** `3 B` `2 F`  
+**`B`** `2 C` `4 E`  
+**`C`** `3 D`  
+**`D`** `6 A` `5 B`  
+**`E`** `3 D`  
+**`F`** `2 E`  
 
-For this program write a function that:
-- Checks if there is a road between two intersections. :vertical_traffic_light:
-- Checks if it is possible to get from one intersection to all the others.  :ok_hand:
-- Checks if we can do a full tour of all streets without visting any street twice. :100:
-- Checks if it is possible to go around some part of the city from an intersection and return to it. :arrows_counterclockwise:
-- Finds all culs-de-sac. :warning: 
-- Finds the three shortest paths between two intersections. :hourglass_flowing_sand:
-- Finds the three alternative shortest paths between two intersections if some are closed. :construction:
+## Implemented Functions
+Function that checks whether it is possible to:
+- get from one intersection to another; :walking:
+- get from one intersection to all the others; :vertical_traffic_light:
+- do a full tour of all streets without visiting any street twice; :100:
+- go around some part of the city from an intersection and return to it. :arrows_counterclockwise:  
 
-Note: It is possible to have one-way streets or that the street from *A* to *B* has a different length than the street from *B* to *A*. However, it is not possible to have two different streets from *A* to *B*.
+Function that finds:
+- all deadends; :warning: 
+- the three shortest paths between two intersections; :hourglass_flowing_sand:
+- the three alternative shortest paths between two intersections if some are closed. :construction:
 
-## Bonus Functionality
-Write an interactive mode of the program. 
+Note: *It is possible to have one-way streets or that the street from **A** to **B** has a different length than the street from **B** to **A**. However, it is not possible to have two different streets from **A** to **B**.*
 
-This specific mode gives access to the following commands:
+## Interactive Mode
+The interactive mode gives access to the following commands:
 | Name | Params | Usage |
 |-|-|-|
-| location | --- | display current position (intersection) |
-| neighbours | --- | display all adjacent intersections |
+| location | --- | print current position |
+| neighbours | --- | print all adjacent intersections |
 | change | @ | change current position to @ |
-| move | @ | change current position to @ and output the path |
+| move | @ | change current position to @ and print the path |
 | close | @ | add @ to the list of closed intersections |
 | open | @ | remove @ from the list of closed intersections |
-| closed | --- | display all closed intersections |
-| tour | --- | display a city tour |
+| closed | --- | print all closed intersections |
+| tour | --- | print a city tour |
+| help | --- | print this list |
+| exit | --- | exit the program |
